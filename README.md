@@ -34,3 +34,4 @@ The ideia here is to allow users to categorize their collections in a totally NS
 * SonarLint
 
 ### Project Structure
+The initial version will be made with Windows Forms just to make it simple. Later I'll migrate the common code to .Net Core lib and expose it to other GUIs.

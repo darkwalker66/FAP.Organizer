@@ -85,7 +85,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\TestImages\AliceMarch.jpg">
+    <Resource Include="Resources\TestImages\workingOn.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>

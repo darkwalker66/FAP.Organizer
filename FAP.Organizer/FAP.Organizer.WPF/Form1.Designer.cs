@@ -70,7 +70,7 @@ namespace FAP.Organizer.WPF
         private void Form1_Load(object sender, EventArgs e)
         {                        
             string imagePath = Path.Combine("Resource", "TestImages", "AliceMarch.jpg");
-            Image image = FAP.Organizer.WPF.Properties.Resources.AliceMarch;
+            Image image = FAP.Organizer.WPF.Properties.Resources.workingOn;
             pictureBox1.Image = image;
             pictureBox1.Height = image.Height;
             pictureBox1.Width = image.Width;

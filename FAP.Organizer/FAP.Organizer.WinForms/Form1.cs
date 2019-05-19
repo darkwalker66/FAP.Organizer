@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,22 +16,60 @@ namespace FAP.Organizer.WinForms
         public Form1()
         {
             InitializeComponent();
+            listViewImages.SmallImageList = imageListSmall;
+            listViewImages.LargeImageList = imageListLarge;
         }
 
 
+
+
+        #region Properties/Members
         OpenFileDialog ofd = new OpenFileDialog()
         {
             Multiselect = true,
             ValidateNames = true,
-            Filter =
- "JPG|*jpg|JPEG|*.jpeg|PNG|*.png"
+            Filter = "JPG|*jpg|JPEG|*.jpeg|PNG|*.png"
         };
+        ImageList imageList = new ImageList();
+        ImageList imageListSmall= new ImageList();
+        ImageList imageListLarge = new ImageList();
+        int imageCount = 0; //image index for ListView
+        FileInfo fi;
+        #endregion
 
         private void BtnSearchImages_Click(object sender, EventArgs e)
         {
+            //setup imagelist sizes
+            imageList.ImageSize = new Size(50, 50);
+            imageListSmall.ImageSize = new Size(32, 32);
+            imageListLarge.ImageSize = new Size(80, 80);
+
             if (ofd.ShowDialog() == DialogResult.OK)
             {
-                pictureBox1.Load(ofd.FileName);
+                listViewImages.Items.Clear();
+                foreach (string fileName in ofd.FileNames)
+                {
+                    fi = new FileInfo(fileName);
+                    FileInfo fileinfo = new FileInfo(fileName);                    
+                    using (FileStream stream = new FileStream(fi.FullName, FileMode.Open, FileAccess.Read))
+                    {
+                        Image img = Image.FromStream(stream);
+                        imageList.Images.Add(img);
+                        imageListSmall.Images.Add(img);
+                        imageListLarge.Images.Add(img);
+                    }
+                    
+                    listViewImages.LargeImageList = imageList;
+                    listViewImages.Items.Add(new ListViewItem()
+                    {
+                        ImageIndex = imageCount,
+                        Text = fi.Name,
+                        Tag = fi.Name
+                    });
+                    imageCount++;
+                }
+                
+                //pictureBox1.Load(ofd.FileName);
             }
         }
     }

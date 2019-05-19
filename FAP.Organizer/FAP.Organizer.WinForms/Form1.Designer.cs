@@ -32,6 +32,7 @@ namespace FAP.Organizer.WinForms
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
@@ -40,9 +41,14 @@ namespace FAP.Organizer.WinForms
             this.rbLargeIcon = new System.Windows.Forms.RadioButton();
             this.rbTiles = new System.Windows.Forms.RadioButton();
             this.listViewImages = new System.Windows.Forms.ListView();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.btnSlide = new System.Windows.Forms.Button();
+            this.slideShowTimer = new System.Windows.Forms.Timer(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
+            this.flowLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -53,12 +59,13 @@ namespace FAP.Organizer.WinForms
             this.tableLayoutPanel1.Controls.Add(this.pictureBox1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel1, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.listViewImages, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel2, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 73.11111F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 26.88889F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 67.77778F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 32.22222F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(800, 450);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
@@ -68,8 +75,7 @@ namespace FAP.Organizer.WinForms
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox1.Location = new System.Drawing.Point(3, 3);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(674, 322);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.Size = new System.Drawing.Size(674, 299);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
@@ -79,9 +85,10 @@ namespace FAP.Organizer.WinForms
             this.flowLayoutPanel1.Controls.Add(this.rbSmallIcon);
             this.flowLayoutPanel1.Controls.Add(this.rbLargeIcon);
             this.flowLayoutPanel1.Controls.Add(this.rbTiles);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(683, 331);
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(683, 308);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(114, 116);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(114, 139);
             this.flowLayoutPanel1.TabIndex = 1;
             // 
             // btnSearchImages
@@ -135,12 +142,49 @@ namespace FAP.Organizer.WinForms
             this.listViewImages.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.listViewImages.Location = new System.Drawing.Point(3, 331);
+            this.listViewImages.Location = new System.Drawing.Point(3, 308);
             this.listViewImages.Name = "listViewImages";
-            this.listViewImages.Size = new System.Drawing.Size(674, 116);
+            this.listViewImages.Size = new System.Drawing.Size(674, 139);
             this.listViewImages.TabIndex = 2;
             this.listViewImages.UseCompatibleStateImageBehavior = false;
             this.listViewImages.Click += new System.EventHandler(this.ListViewImages_Click);
+            // 
+            // flowLayoutPanel2
+            // 
+            this.flowLayoutPanel2.Controls.Add(this.btnSave);
+            this.flowLayoutPanel2.Controls.Add(this.btnSlide);
+            this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(683, 3);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(114, 299);
+            this.flowLayoutPanel2.TabIndex = 3;
+            // 
+            // btnSave
+            // 
+            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSave.AutoSize = true;
+            this.btnSave.Location = new System.Drawing.Point(3, 3);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(102, 23);
+            this.btnSave.TabIndex = 0;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = true;
+            // 
+            // btnSlide
+            // 
+            this.btnSlide.Location = new System.Drawing.Point(3, 32);
+            this.btnSlide.Name = "btnSlide";
+            this.btnSlide.Size = new System.Drawing.Size(102, 23);
+            this.btnSlide.TabIndex = 1;
+            this.btnSlide.Text = "Slide Show";
+            this.btnSlide.UseVisualStyleBackColor = true;
+            this.btnSlide.Click += new System.EventHandler(this.BtnSlide_Click);
+            // 
+            // slideShowTimer
+            // 
+            this.slideShowTimer.Interval = 1300;
+            this.slideShowTimer.Tick += new System.EventHandler(this.SlideShowTimer_Tick);
             // 
             // Form1
             // 
@@ -155,6 +199,8 @@ namespace FAP.Organizer.WinForms
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
+            this.flowLayoutPanel2.ResumeLayout(false);
+            this.flowLayoutPanel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -177,6 +223,10 @@ namespace FAP.Organizer.WinForms
         private RadioButton rbSmallIcon;
         private RadioButton rbLargeIcon;
         private RadioButton rbTiles;
+        private FlowLayoutPanel flowLayoutPanel2;
+        private Button btnSave;
+        private Button btnSlide;
+        private Timer slideShowTimer;
     }
 }
 

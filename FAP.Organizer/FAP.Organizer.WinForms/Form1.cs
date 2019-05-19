@@ -18,6 +18,10 @@ namespace FAP.Organizer.WinForms
             InitializeComponent();
             listViewImages.SmallImageList = imageListSmall;
             listViewImages.LargeImageList = imageListLarge;
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            imageList.ColorDepth = ColorDepth.Depth16Bit;
+            imageListLarge.ColorDepth = ColorDepth.Depth16Bit;
+            imageListSmall.ColorDepth = ColorDepth.Depth16Bit;
         }
 
 
@@ -30,17 +34,19 @@ namespace FAP.Organizer.WinForms
             ValidateNames = true,
             Filter = "JPG|*jpg|JPEG|*.jpeg|PNG|*.png"
         };
-        ImageList imageList = new ImageList();
+        ImageList imageList = new ImageList();        
+        List<string> _imgs = new List<string>();
         ImageList imageListSmall= new ImageList();
         ImageList imageListLarge = new ImageList();
         int imageCount = 0; //image index for ListView
+        int currentImageSelectedIndex = 0;
         FileInfo fi;
         #endregion
 
         private void BtnSearchImages_Click(object sender, EventArgs e)
         {
             //setup imagelist sizes
-            imageList.ImageSize = new Size(50, 50);
+            //imageList.ImageSize = new Size(50, 50);
             imageListSmall.ImageSize = new Size(32, 32);
             imageListLarge.ImageSize = new Size(80, 80);
 
@@ -53,12 +59,13 @@ namespace FAP.Organizer.WinForms
                     using (FileStream stream = new FileStream(fi.FullName, FileMode.Open, FileAccess.Read))
                     {
                         Image img = Image.FromStream(stream);
+                        _imgs.Add(fileName);                        
                         imageList.Images.Add(img);
                         imageListSmall.Images.Add(img);
                         imageListLarge.Images.Add(img);
                     }
                     
-                    listViewImages.LargeImageList = imageList;
+                    listViewImages.LargeImageList = imageList;                    
                     listViewImages.Items.Add(new ListViewItem()
                     {
                         ImageIndex = imageCount,
@@ -66,9 +73,7 @@ namespace FAP.Organizer.WinForms
                         Tag = fi.Name
                     });
                     imageCount++;
-                }
-                
-                //pictureBox1.Load(ofd.FileName);
+                }                                
             }
         }
 
@@ -100,8 +105,36 @@ namespace FAP.Organizer.WinForms
         private void ListViewImages_Click(object sender, EventArgs e)
         {
             var firstSelectedItem = listViewImages.SelectedItems[0];
-            pictureBox1.Image = imageList.Images[firstSelectedItem.ImageIndex];            
+            //pictureBox1.Image = imageList.Images[firstSelectedItem.ImageIndex];
+            //pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            string fileName = _imgs[firstSelectedItem.ImageIndex];
+            currentImageSelectedIndex = firstSelectedItem.ImageIndex;
+            using (FileStream stream = new FileStream(fileName, FileMode.Open, FileAccess.Read))
+            {
+                pictureBox1.Image = Image.FromStream(stream);
+            }
+
+        }
+
+        private void SlideShowTimer_Tick(object sender, EventArgs e)
+        {
             
+            string fileName = _imgs[currentImageSelectedIndex];
+            using (FileStream stream = new FileStream(fileName, FileMode.Open, FileAccess.Read))
+            {
+                pictureBox1.Image = Image.FromStream(stream);
+            }
+            currentImageSelectedIndex++;
+            if (currentImageSelectedIndex >= _imgs.Count)
+                currentImageSelectedIndex = 0;
+        }
+
+        private void BtnSlide_Click(object sender, EventArgs e)
+        {
+            if (slideShowTimer.Enabled)
+                slideShowTimer.Stop();
+            else
+                slideShowTimer.Start();
         }
     }
 }

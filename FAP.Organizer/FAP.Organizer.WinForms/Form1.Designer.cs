@@ -36,6 +36,9 @@ namespace FAP.Organizer.WinForms
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnSearchImages = new System.Windows.Forms.Button();
+            this.rbSmallIcon = new System.Windows.Forms.RadioButton();
+            this.rbLargeIcon = new System.Windows.Forms.RadioButton();
+            this.rbTiles = new System.Windows.Forms.RadioButton();
             this.listViewImages = new System.Windows.Forms.ListView();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -73,6 +76,9 @@ namespace FAP.Organizer.WinForms
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.Controls.Add(this.btnSearchImages);
+            this.flowLayoutPanel1.Controls.Add(this.rbSmallIcon);
+            this.flowLayoutPanel1.Controls.Add(this.rbLargeIcon);
+            this.flowLayoutPanel1.Controls.Add(this.rbTiles);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(683, 331);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(114, 116);
@@ -88,6 +94,42 @@ namespace FAP.Organizer.WinForms
             this.btnSearchImages.UseVisualStyleBackColor = true;
             this.btnSearchImages.Click += new System.EventHandler(this.BtnSearchImages_Click);
             // 
+            // rbSmallIcon
+            // 
+            this.rbSmallIcon.AutoSize = true;
+            this.rbSmallIcon.Location = new System.Drawing.Point(3, 32);
+            this.rbSmallIcon.Name = "rbSmallIcon";
+            this.rbSmallIcon.Size = new System.Drawing.Size(79, 17);
+            this.rbSmallIcon.TabIndex = 1;
+            this.rbSmallIcon.TabStop = true;
+            this.rbSmallIcon.Text = "Small Icons";
+            this.rbSmallIcon.UseVisualStyleBackColor = true;
+            this.rbSmallIcon.CheckedChanged += new System.EventHandler(this.RbSmallIcon_CheckedChanged);
+            // 
+            // rbLargeIcon
+            // 
+            this.rbLargeIcon.AutoSize = true;
+            this.rbLargeIcon.Location = new System.Drawing.Point(3, 55);
+            this.rbLargeIcon.Name = "rbLargeIcon";
+            this.rbLargeIcon.Size = new System.Drawing.Size(81, 17);
+            this.rbLargeIcon.TabIndex = 2;
+            this.rbLargeIcon.TabStop = true;
+            this.rbLargeIcon.Text = "Large Icons";
+            this.rbLargeIcon.UseVisualStyleBackColor = true;
+            this.rbLargeIcon.CheckedChanged += new System.EventHandler(this.RbLargeIcon_CheckedChanged);
+            // 
+            // rbTiles
+            // 
+            this.rbTiles.AutoSize = true;
+            this.rbTiles.Location = new System.Drawing.Point(3, 78);
+            this.rbTiles.Name = "rbTiles";
+            this.rbTiles.Size = new System.Drawing.Size(47, 17);
+            this.rbTiles.TabIndex = 3;
+            this.rbTiles.TabStop = true;
+            this.rbTiles.Text = "Tiles";
+            this.rbTiles.UseVisualStyleBackColor = true;
+            this.rbTiles.CheckedChanged += new System.EventHandler(this.RbTiles_CheckedChanged);
+            // 
             // listViewImages
             // 
             this.listViewImages.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -98,6 +140,7 @@ namespace FAP.Organizer.WinForms
             this.listViewImages.Size = new System.Drawing.Size(674, 116);
             this.listViewImages.TabIndex = 2;
             this.listViewImages.UseCompatibleStateImageBehavior = false;
+            this.listViewImages.Click += new System.EventHandler(this.ListViewImages_Click);
             // 
             // Form1
             // 
@@ -111,6 +154,7 @@ namespace FAP.Organizer.WinForms
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
+            this.flowLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -130,6 +174,9 @@ namespace FAP.Organizer.WinForms
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Button btnSearchImages;
         private ListView listViewImages;
+        private RadioButton rbSmallIcon;
+        private RadioButton rbLargeIcon;
+        private RadioButton rbTiles;
     }
 }
 

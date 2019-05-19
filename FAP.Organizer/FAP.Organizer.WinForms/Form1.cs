@@ -49,8 +49,7 @@ namespace FAP.Organizer.WinForms
                 listViewImages.Items.Clear();
                 foreach (string fileName in ofd.FileNames)
                 {
-                    fi = new FileInfo(fileName);
-                    FileInfo fileinfo = new FileInfo(fileName);                    
+                    fi = new FileInfo(fileName);                               
                     using (FileStream stream = new FileStream(fi.FullName, FileMode.Open, FileAccess.Read))
                     {
                         Image img = Image.FromStream(stream);
@@ -71,6 +70,38 @@ namespace FAP.Organizer.WinForms
                 
                 //pictureBox1.Load(ofd.FileName);
             }
+        }
+
+        private void RbSmallIcon_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbSmallIcon.Checked)
+            {
+                listViewImages.View = View.SmallIcon;
+            }
+        }
+
+        private void RbLargeIcon_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbLargeIcon.Checked)
+            {
+                listViewImages.LargeImageList = imageListLarge;
+                listViewImages.View = View.LargeIcon;
+            }
+        }
+
+        private void RbTiles_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbTiles.Checked)
+            {
+                listViewImages.View = View.Tile;
+            }
+        }
+
+        private void ListViewImages_Click(object sender, EventArgs e)
+        {
+            var firstSelectedItem = listViewImages.SelectedItems[0];
+            pictureBox1.Image = imageList.Images[firstSelectedItem.ImageIndex];            
+            
         }
     }
 }

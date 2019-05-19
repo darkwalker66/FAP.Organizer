@@ -8,6 +8,15 @@ Want only those shameful asian porn? Make your life easier by finding them here.
 
 ## Project Status
 This project was started on 16 of May, 2019.
+- [x] Load Group of pictures into the program
+- [x] Customizable Slide Show (Allow user to define time of transition and image to start)
+- [ ] Save Image Collection / Info (hash based on image content, filename)
+- [ ] Load Saved Collection
+- [ ] Add Tags to individual images (Blonde, Creampie, etc)
+- [ ] Filter images by Tags
+- [ ] Add Categories (Eg: Small Boobies, Hairy pussy, etc)
+- [ ] Organize by Categories
+
 
 ## Project Goals
 * Picture Viewer
@@ -21,8 +30,9 @@ The ideia here is to allow users to categorize their collections in a totally NS
 
 
 ### File Extensions
-- [ ] jpg
-- [ ] png
+- [x] jpeg
+- [x] jpg
+- [x] png
 - [ ] webm
 
 ---
@@ -31,7 +41,6 @@ The ideia here is to allow users to categorize their collections in a totally NS
 ### Tools Used
 * Visual Studio 2019
 * .Net/C#
-* SonarLint
 
 ### Project Structure
 The initial version will be made with Windows Forms just to make it simple. Later I'll migrate the common code to .Net Core lib and expose it to other GUIs.

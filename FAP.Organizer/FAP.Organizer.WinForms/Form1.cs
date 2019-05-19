@@ -43,6 +43,7 @@ namespace FAP.Organizer.WinForms
         int imageCount = 0; //image index for ListView
         int currentImageSelectedIndex = 0;
         FileInfo fi;
+        bool slideShowRandom = false;
         #endregion
 
         private void BtnSearchImages_Click(object sender, EventArgs e)
@@ -120,8 +121,17 @@ namespace FAP.Organizer.WinForms
 
         private void SlideShowTimer_Tick(object sender, EventArgs e)
         {
-            
-            string fileName = _imgs[currentImageSelectedIndex];
+            string fileName;
+            if (slideShowRandom)
+            {
+                var rand = new Random();
+                var randomIndex = rand.Next(_imgs.Count);
+                fileName = _imgs[randomIndex];
+            }
+            else
+            {
+                fileName = _imgs[currentImageSelectedIndex];
+            }            
             using (FileStream stream = new FileStream(fileName, FileMode.Open, FileAccess.Read))
             {
                 pictureBox1.Image = Image.FromStream(stream);
@@ -154,6 +164,11 @@ namespace FAP.Organizer.WinForms
             };
             var resourceManagerService = new ResourceManagerService();
             resourceManagerService.SaveTagsToDisk(tags, "C:\\someClass.txt");
+        }
+
+        private void CheckRandom_CheckedChanged(object sender, EventArgs e)
+        {
+            slideShowRandom = checkRandom.Checked;
         }
     }
 }

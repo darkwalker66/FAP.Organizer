@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace FAP.Organizer.WinForms.Services
 {
-    public class ResourceManagerService<T>
+    public class ResourceManagerService
     {
         /// <summary>
         /// Has to save:

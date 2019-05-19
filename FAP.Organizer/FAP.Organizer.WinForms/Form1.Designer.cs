@@ -45,6 +45,7 @@ namespace FAP.Organizer.WinForms
             this.btnSave = new System.Windows.Forms.Button();
             this.btnSlide = new System.Windows.Forms.Button();
             this.SlideShowTimerNumeric = new System.Windows.Forms.NumericUpDown();
+            this.checkRandom = new System.Windows.Forms.CheckBox();
             this.slideShowTimer = new System.Windows.Forms.Timer(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -156,6 +157,7 @@ namespace FAP.Organizer.WinForms
             this.flowLayoutPanel2.Controls.Add(this.btnSave);
             this.flowLayoutPanel2.Controls.Add(this.btnSlide);
             this.flowLayoutPanel2.Controls.Add(this.SlideShowTimerNumeric);
+            this.flowLayoutPanel2.Controls.Add(this.checkRandom);
             this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel2.Location = new System.Drawing.Point(683, 3);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
@@ -202,6 +204,17 @@ namespace FAP.Organizer.WinForms
             0,
             0});
             this.SlideShowTimerNumeric.ValueChanged += new System.EventHandler(this.SlideShowTimerNumeric_ValueChanged);
+            // 
+            // checkRandom
+            // 
+            this.checkRandom.AutoSize = true;
+            this.checkRandom.Location = new System.Drawing.Point(3, 87);
+            this.checkRandom.Name = "checkRandom";
+            this.checkRandom.Size = new System.Drawing.Size(66, 17);
+            this.checkRandom.TabIndex = 3;
+            this.checkRandom.Text = "Random";
+            this.checkRandom.UseVisualStyleBackColor = true;
+            this.checkRandom.CheckedChanged += new System.EventHandler(this.CheckRandom_CheckedChanged);
             // 
             // slideShowTimer
             // 
@@ -251,6 +264,7 @@ namespace FAP.Organizer.WinForms
         private Button btnSlide;
         private Timer slideShowTimer;
         private NumericUpDown SlideShowTimerNumeric;
+        private CheckBox checkRandom;
     }
 }
 

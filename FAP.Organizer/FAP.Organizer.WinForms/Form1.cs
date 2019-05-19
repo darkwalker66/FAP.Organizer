@@ -1,4 +1,6 @@
-﻿using System;
+﻿using FAP.Organizer.WinForms.Entities;
+using FAP.Organizer.WinForms.Services;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -135,6 +137,23 @@ namespace FAP.Organizer.WinForms
                 slideShowTimer.Stop();
             else
                 slideShowTimer.Start();
+        }
+
+        private void SlideShowTimerNumeric_ValueChanged(object sender, EventArgs e)
+        {
+            this.slideShowTimer.Interval = ((int)SlideShowTimerNumeric.Value) * 1000;
+        }
+
+        private void BtnSave_Click(object sender, EventArgs e)
+        {
+            List<Tag> tags = new List<Tag>()
+            {
+                new Tag(){Name = "Developer"},
+                new Tag(){Name = "Designer"},
+                new Tag(){Name = "Manager"},
+            };
+            var resourceManagerService = new ResourceManagerService();
+            resourceManagerService.SaveTagsToDisk(tags, "C:\\someClass.txt");
         }
     }
 }

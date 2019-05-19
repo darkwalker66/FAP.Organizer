@@ -44,11 +44,13 @@ namespace FAP.Organizer.WinForms
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnSlide = new System.Windows.Forms.Button();
+            this.SlideShowTimerNumeric = new System.Windows.Forms.NumericUpDown();
             this.slideShowTimer = new System.Windows.Forms.Timer(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SlideShowTimerNumeric)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -153,6 +155,7 @@ namespace FAP.Organizer.WinForms
             // 
             this.flowLayoutPanel2.Controls.Add(this.btnSave);
             this.flowLayoutPanel2.Controls.Add(this.btnSlide);
+            this.flowLayoutPanel2.Controls.Add(this.SlideShowTimerNumeric);
             this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel2.Location = new System.Drawing.Point(683, 3);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
@@ -170,6 +173,7 @@ namespace FAP.Organizer.WinForms
             this.btnSave.TabIndex = 0;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.BtnSave_Click);
             // 
             // btnSlide
             // 
@@ -180,6 +184,24 @@ namespace FAP.Organizer.WinForms
             this.btnSlide.Text = "Slide Show";
             this.btnSlide.UseVisualStyleBackColor = true;
             this.btnSlide.Click += new System.EventHandler(this.BtnSlide_Click);
+            // 
+            // SlideShowTimerNumeric
+            // 
+            this.SlideShowTimerNumeric.Location = new System.Drawing.Point(3, 61);
+            this.SlideShowTimerNumeric.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.SlideShowTimerNumeric.Name = "SlideShowTimerNumeric";
+            this.SlideShowTimerNumeric.Size = new System.Drawing.Size(66, 20);
+            this.SlideShowTimerNumeric.TabIndex = 2;
+            this.SlideShowTimerNumeric.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.SlideShowTimerNumeric.ValueChanged += new System.EventHandler(this.SlideShowTimerNumeric_ValueChanged);
             // 
             // slideShowTimer
             // 
@@ -201,6 +223,7 @@ namespace FAP.Organizer.WinForms
             this.flowLayoutPanel1.PerformLayout();
             this.flowLayoutPanel2.ResumeLayout(false);
             this.flowLayoutPanel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SlideShowTimerNumeric)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -227,6 +250,7 @@ namespace FAP.Organizer.WinForms
         private Button btnSave;
         private Button btnSlide;
         private Timer slideShowTimer;
+        private NumericUpDown SlideShowTimerNumeric;
     }
 }
 

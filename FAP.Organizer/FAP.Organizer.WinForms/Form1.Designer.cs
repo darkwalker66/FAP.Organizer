@@ -47,6 +47,7 @@ namespace FAP.Organizer.WinForms
             this.SlideShowTimerNumeric = new System.Windows.Forms.NumericUpDown();
             this.checkRandom = new System.Windows.Forms.CheckBox();
             this.slideShowTimer = new System.Windows.Forms.Timer(this.components);
+            this.btnClearList = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
@@ -88,6 +89,7 @@ namespace FAP.Organizer.WinForms
             this.flowLayoutPanel1.Controls.Add(this.rbSmallIcon);
             this.flowLayoutPanel1.Controls.Add(this.rbLargeIcon);
             this.flowLayoutPanel1.Controls.Add(this.rbTiles);
+            this.flowLayoutPanel1.Controls.Add(this.btnClearList);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(683, 308);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -221,6 +223,16 @@ namespace FAP.Organizer.WinForms
             this.slideShowTimer.Interval = 1300;
             this.slideShowTimer.Tick += new System.EventHandler(this.SlideShowTimer_Tick);
             // 
+            // btnClearList
+            // 
+            this.btnClearList.Location = new System.Drawing.Point(3, 101);
+            this.btnClearList.Name = "btnClearList";
+            this.btnClearList.Size = new System.Drawing.Size(102, 23);
+            this.btnClearList.TabIndex = 4;
+            this.btnClearList.Text = "Clear List";
+            this.btnClearList.UseVisualStyleBackColor = true;
+            this.btnClearList.Click += new System.EventHandler(this.BtnClearList_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -265,6 +277,7 @@ namespace FAP.Organizer.WinForms
         private Timer slideShowTimer;
         private NumericUpDown SlideShowTimerNumeric;
         private CheckBox checkRandom;
+        private Button btnClearList;
     }
 }
 

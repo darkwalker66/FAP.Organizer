@@ -19,7 +19,7 @@ namespace FAP.Organizer.WinForms
         {
             InitializeComponent();
             listViewImages.SmallImageList = imageListSmall;
-            listViewImages.LargeImageList = imageListLarge;
+            listViewImages.LargeImageList = imageListLarge;            
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             imageList.ColorDepth = ColorDepth.Depth16Bit;
             imageListLarge.ColorDepth = ColorDepth.Depth16Bit;
@@ -67,8 +67,8 @@ namespace FAP.Organizer.WinForms
                         imageListSmall.Images.Add(img);
                         imageListLarge.Images.Add(img);
                     }
-                    
-                    listViewImages.LargeImageList = imageList;                    
+
+                    listViewImages.LargeImageList = imageListLarge;
                     listViewImages.Items.Add(new ListViewItem()
                     {
                         ImageIndex = imageCount,
@@ -76,7 +76,8 @@ namespace FAP.Organizer.WinForms
                         Tag = fi.Name
                     });
                     imageCount++;
-                }                                
+                }
+                
             }
         }
 
@@ -121,24 +122,31 @@ namespace FAP.Organizer.WinForms
 
         private void SlideShowTimer_Tick(object sender, EventArgs e)
         {
-            string fileName;
+            string fileName = "";
             if (slideShowRandom)
             {
                 var rand = new Random();
                 var randomIndex = rand.Next(_imgs.Count);
-                fileName = _imgs[randomIndex];
+                if (_imgs.Count > 0)
+                    fileName = _imgs[randomIndex];
+
             }
             else
             {
-                fileName = _imgs[currentImageSelectedIndex];
-            }            
-            using (FileStream stream = new FileStream(fileName, FileMode.Open, FileAccess.Read))
-            {
-                pictureBox1.Image = Image.FromStream(stream);
+                if (_imgs.Count > 0)
+                    fileName = _imgs[currentImageSelectedIndex];
             }
-            currentImageSelectedIndex++;
-            if (currentImageSelectedIndex >= _imgs.Count)
-                currentImageSelectedIndex = 0;
+            if (!string.IsNullOrWhiteSpace(fileName))
+            {
+                using (FileStream stream = new FileStream(fileName, FileMode.Open, FileAccess.Read))
+                {
+                    pictureBox1.Image = Image.FromStream(stream);
+                }
+                currentImageSelectedIndex++;
+                if (currentImageSelectedIndex >= _imgs.Count)
+                    currentImageSelectedIndex = 0;
+            }
+            
         }
 
         private void BtnSlide_Click(object sender, EventArgs e)
@@ -169,6 +177,16 @@ namespace FAP.Organizer.WinForms
         private void CheckRandom_CheckedChanged(object sender, EventArgs e)
         {
             slideShowRandom = checkRandom.Checked;
+        }
+
+        private void BtnClearList_Click(object sender, EventArgs e)
+        {
+            currentImageSelectedIndex = 0;
+            imageCount = 0;
+            _imgs.Clear();
+            imageList.Images.Clear();
+            imageListLarge.Images.Clear();
+            imageListSmall.Images.Clear();
         }
     }
 }

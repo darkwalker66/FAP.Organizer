@@ -1,4 +1,5 @@
 ﻿using FAP.Organizer.WinForms.Entities;
+using FAP.Organizer.WPF.Entities;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -19,27 +20,26 @@ namespace FAP.Organizer.WinForms.Services
         /// - tags
         /// </summary>
         /// <returns></returns>
-        public bool SaveImageInformation()
+        public void SaveImagesInfoToDisk(IEnumerable<ImageResource> images, string filePath)
         {
-            return true;
+
+            foreach (var item in images)
+            {
+                WriteToJsonFile(item, filePath);
+            }
         }
 
 
         public void SaveTagsToDisk(List<Tag> tagList, string filePath)
         {
-            
-            List<string> objsToSave = new List<string>();
             foreach (var item in tagList)
             {
                 WriteToJsonFile(item, filePath);
             }
-
-            
-
         }
 
         // Maybe use an abordage like: https://stackoverflow.com/questions/6115721/how-to-save-restore-serializable-object-to-from-file
-        private void WriteToJsonFile(Tag itemToWrite, string filePath)
+        private void WriteToJsonFile<T>(T itemToWrite, string filePath)
         {
             TextWriter writer = null;
             try

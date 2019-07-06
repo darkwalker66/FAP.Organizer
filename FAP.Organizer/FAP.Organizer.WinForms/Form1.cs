@@ -1,5 +1,6 @@
 ﻿using FAP.Organizer.WinForms.Entities;
 using FAP.Organizer.WinForms.Services;
+using FAP.Organizer.WPF.Entities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -44,6 +45,7 @@ namespace FAP.Organizer.WinForms
         int currentImageSelectedIndex = 0;
         FileInfo fi;
         bool slideShowRandom = false;
+        List<ImageResource> loadedImages = new List<ImageResource>();
         #endregion
 
         private void BtnSearchImages_Click(object sender, EventArgs e)
@@ -55,6 +57,7 @@ namespace FAP.Organizer.WinForms
 
             if (ofd.ShowDialog() == DialogResult.OK)
             {
+                
                 listViewImages.Items.Clear();
                 foreach (string fileName in ofd.FileNames)
                 {
@@ -62,6 +65,9 @@ namespace FAP.Organizer.WinForms
                     using (FileStream stream = new FileStream(fi.FullName, FileMode.Open, FileAccess.Read))
                     {
                         Image img = Image.FromStream(stream);
+                        var imgResource = new ImageResource(fileName, stream);
+                        loadedImages.Add(imgResource);
+
                         _imgs.Add(fileName);                        
                         imageList.Images.Add(img);
                         imageListSmall.Images.Add(img);
@@ -80,6 +86,7 @@ namespace FAP.Organizer.WinForms
                 
             }
         }
+
 
         private void RbSmallIcon_CheckedChanged(object sender, EventArgs e)
         {
@@ -170,8 +177,11 @@ namespace FAP.Organizer.WinForms
                 new Tag(){Name = "Designer"},
                 new Tag(){Name = "Manager"},
             };
+            
             var resourceManagerService = new ResourceManagerService();
             resourceManagerService.SaveTagsToDisk(tags, "C:\\someClass.txt");
+            resourceManagerService.SaveImagesInfoToDisk(loadedImages, "C:\\loadedImages.txt");
+            
         }
 
         private void CheckRandom_CheckedChanged(object sender, EventArgs e)

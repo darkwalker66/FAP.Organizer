@@ -40,6 +40,7 @@ namespace FAP.Organizer.WinForms
             this.rbSmallIcon = new System.Windows.Forms.RadioButton();
             this.rbLargeIcon = new System.Windows.Forms.RadioButton();
             this.rbTiles = new System.Windows.Forms.RadioButton();
+            this.btnClearList = new System.Windows.Forms.Button();
             this.listViewImages = new System.Windows.Forms.ListView();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnSave = new System.Windows.Forms.Button();
@@ -47,7 +48,6 @@ namespace FAP.Organizer.WinForms
             this.SlideShowTimerNumeric = new System.Windows.Forms.NumericUpDown();
             this.checkRandom = new System.Windows.Forms.CheckBox();
             this.slideShowTimer = new System.Windows.Forms.Timer(this.components);
-            this.btnClearList = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
@@ -142,6 +142,16 @@ namespace FAP.Organizer.WinForms
             this.rbTiles.UseVisualStyleBackColor = true;
             this.rbTiles.CheckedChanged += new System.EventHandler(this.RbTiles_CheckedChanged);
             // 
+            // btnClearList
+            // 
+            this.btnClearList.Location = new System.Drawing.Point(3, 101);
+            this.btnClearList.Name = "btnClearList";
+            this.btnClearList.Size = new System.Drawing.Size(102, 23);
+            this.btnClearList.TabIndex = 4;
+            this.btnClearList.Text = "Clear List";
+            this.btnClearList.UseVisualStyleBackColor = true;
+            this.btnClearList.Click += new System.EventHandler(this.BtnClearList_Click);
+            // 
             // listViewImages
             // 
             this.listViewImages.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -223,16 +233,6 @@ namespace FAP.Organizer.WinForms
             this.slideShowTimer.Interval = 1300;
             this.slideShowTimer.Tick += new System.EventHandler(this.SlideShowTimer_Tick);
             // 
-            // btnClearList
-            // 
-            this.btnClearList.Location = new System.Drawing.Point(3, 101);
-            this.btnClearList.Name = "btnClearList";
-            this.btnClearList.Size = new System.Drawing.Size(102, 23);
-            this.btnClearList.TabIndex = 4;
-            this.btnClearList.Text = "Clear List";
-            this.btnClearList.UseVisualStyleBackColor = true;
-            this.btnClearList.Click += new System.EventHandler(this.BtnClearList_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -240,7 +240,7 @@ namespace FAP.Organizer.WinForms
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Organizer";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace FAP.Organizer.WinForms
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         /// Required designer variable.
@@ -82,6 +82,7 @@ namespace FAP.Organizer.WinForms
             this.pictureBox1.Size = new System.Drawing.Size(674, 299);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.DoubleClick += new System.EventHandler(this.PictureBox1_DoubleClick);
             // 
             // flowLayoutPanel1
             // 
@@ -233,13 +234,13 @@ namespace FAP.Organizer.WinForms
             this.slideShowTimer.Interval = 1300;
             this.slideShowTimer.Tick += new System.EventHandler(this.SlideShowTimer_Tick);
             // 
-            // Form1
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Name = "Form1";
+            this.Name = "MainForm";
             this.Text = "Organizer";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tableLayoutPanel1.ResumeLayout(false);

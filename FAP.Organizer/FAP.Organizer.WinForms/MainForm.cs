@@ -14,9 +14,9 @@ using System.Windows.Forms;
 
 namespace FAP.Organizer.WinForms
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
             listViewImages.SmallImageList = imageListSmall;
@@ -31,6 +31,10 @@ namespace FAP.Organizer.WinForms
 
 
         #region Properties/Members
+
+        public bool isPreviewImageOnFullScreen { get; set; }
+        FullScreenImageForm fullScreenImageForm;
+
         OpenFileDialog ofd = new OpenFileDialog()
         {
             Multiselect = true,
@@ -148,6 +152,11 @@ namespace FAP.Organizer.WinForms
                 using (FileStream stream = new FileStream(fileName, FileMode.Open, FileAccess.Read))
                 {
                     pictureBox1.Image = Image.FromStream(stream);
+                    //update image on fullscreen mode
+                    if (this.isPreviewImageOnFullScreen)
+                    {
+                        fullScreenImageForm.PreviewImage.Image = this.pictureBox1.Image;
+                    }
                 }
                 currentImageSelectedIndex++;
                 if (currentImageSelectedIndex >= _imgs.Count)
@@ -197,6 +206,21 @@ namespace FAP.Organizer.WinForms
             imageList.Images.Clear();
             imageListLarge.Images.Clear();
             imageListSmall.Images.Clear();
+        }
+
+        /// <summary>
+        /// Opens a new form and displays it with the current selected image on fullscreen
+        /// and transparent background.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void PictureBox1_DoubleClick(object sender, EventArgs e)
+        {
+            fullScreenImageForm = new FullScreenImageForm();
+            fullScreenImageForm.Parent = this;
+            fullScreenImageForm.PreviewImage.Image = this.pictureBox1.Image;
+            this.isPreviewImageOnFullScreen = true; // used to change images on fullscreen slide show
+            fullScreenImageForm.Show();
         }
     }
 }

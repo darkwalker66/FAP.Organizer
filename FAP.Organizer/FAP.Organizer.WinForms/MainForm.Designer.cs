@@ -47,6 +47,7 @@ namespace FAP.Organizer.WinForms
             this.btnSlide = new System.Windows.Forms.Button();
             this.SlideShowTimerNumeric = new System.Windows.Forms.NumericUpDown();
             this.checkRandom = new System.Windows.Forms.CheckBox();
+            this.tagListBox = new System.Windows.Forms.ListBox();
             this.slideShowTimer = new System.Windows.Forms.Timer(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -171,6 +172,7 @@ namespace FAP.Organizer.WinForms
             this.flowLayoutPanel2.Controls.Add(this.btnSlide);
             this.flowLayoutPanel2.Controls.Add(this.SlideShowTimerNumeric);
             this.flowLayoutPanel2.Controls.Add(this.checkRandom);
+            this.flowLayoutPanel2.Controls.Add(this.tagListBox);
             this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel2.Location = new System.Drawing.Point(683, 3);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
@@ -229,6 +231,15 @@ namespace FAP.Organizer.WinForms
             this.checkRandom.UseVisualStyleBackColor = true;
             this.checkRandom.CheckedChanged += new System.EventHandler(this.CheckRandom_CheckedChanged);
             // 
+            // tagListBox
+            // 
+            this.tagListBox.FormattingEnabled = true;
+            this.tagListBox.Location = new System.Drawing.Point(3, 110);
+            this.tagListBox.Name = "tagListBox";
+            this.tagListBox.ScrollAlwaysVisible = true;
+            this.tagListBox.Size = new System.Drawing.Size(102, 56);
+            this.tagListBox.TabIndex = 4;
+            // 
             // slideShowTimer
             // 
             this.slideShowTimer.Interval = 1300;
@@ -279,6 +290,7 @@ namespace FAP.Organizer.WinForms
         private NumericUpDown SlideShowTimerNumeric;
         private CheckBox checkRandom;
         private Button btnClearList;
+        private ListBox tagListBox;
     }
 }
 

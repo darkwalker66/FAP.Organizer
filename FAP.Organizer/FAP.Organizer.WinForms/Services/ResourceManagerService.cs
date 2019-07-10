@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace FAP.Organizer.WinForms.Services
 {
-    public class ResourceManagerService
+    public static class ResourceManagerService
     {
         /// <summary>
         /// Has to save:
@@ -20,7 +20,7 @@ namespace FAP.Organizer.WinForms.Services
         /// - tags
         /// </summary>
         /// <returns></returns>
-        public void SaveImagesInfoToDisk(IEnumerable<ImageResource> images, string filePath)
+        public static void SaveImagesInfoToDisk(IEnumerable<ImageResource> images, string filePath)
         {
 
             foreach (var item in images)
@@ -30,7 +30,7 @@ namespace FAP.Organizer.WinForms.Services
         }
 
 
-        public void SaveTagsToDisk(List<Tag> tagList, string filePath)
+        public static void SaveTagsToDisk(List<Tag> tagList, string filePath)
         {
             foreach (var item in tagList)
             {
@@ -39,7 +39,7 @@ namespace FAP.Organizer.WinForms.Services
         }
 
         // Maybe use an abordage like: https://stackoverflow.com/questions/6115721/how-to-save-restore-serializable-object-to-from-file
-        private void WriteToJsonFile<T>(T itemToWrite, string filePath)
+        private static void WriteToJsonFile<T>(T itemToWrite, string filePath)
         {
             TextWriter writer = null;
             try

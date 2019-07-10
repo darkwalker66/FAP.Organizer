@@ -1,4 +1,5 @@
 ﻿using FAP.Organizer.WinForms.Entities;
+using FAP.Organizer.WinForms.Handlers;
 using FAP.Organizer.WinForms.Services;
 using FAP.Organizer.WPF.Entities;
 using System;
@@ -25,6 +26,13 @@ namespace FAP.Organizer.WinForms
             imageList.ColorDepth = ColorDepth.Depth16Bit;
             imageListLarge.ColorDepth = ColorDepth.Depth16Bit;
             imageListSmall.ColorDepth = ColorDepth.Depth16Bit;
+            //tags
+            this.tagHandler = new TagHandler();
+            foreach (var tag in tagHandler.Tags)
+            {
+                tagListBox.Items.Add(tag.Name);
+            }
+            
         }
 
 
@@ -34,6 +42,7 @@ namespace FAP.Organizer.WinForms
 
         public bool isPreviewImageOnFullScreen { get; set; }
         FullScreenImageForm fullScreenImageForm;
+        TagHandler tagHandler;
 
         OpenFileDialog ofd = new OpenFileDialog()
         {
@@ -180,16 +189,8 @@ namespace FAP.Organizer.WinForms
 
         private void BtnSave_Click(object sender, EventArgs e)
         {
-            List<Tag> tags = new List<Tag>()
-            {
-                new Tag(){Name = "Developer"},
-                new Tag(){Name = "Designer"},
-                new Tag(){Name = "Manager"},
-            };
-            
-            var resourceManagerService = new ResourceManagerService();
-            resourceManagerService.SaveTagsToDisk(tags, "C:\\someClass.txt");
-            resourceManagerService.SaveImagesInfoToDisk(loadedImages, "C:\\loadedImages.txt");
+            tagHandler.SaveTagsToDisk();
+            ResourceManagerService.SaveImagesInfoToDisk(loadedImages, "C:\\loadedImages.txt");
             
         }
 

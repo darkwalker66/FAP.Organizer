@@ -74,6 +74,7 @@
     <Compile Include="FullScreenImageForm.Designer.cs">
       <DependentUpon>FullScreenImageForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Handlers\TagHandler.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -83,6 +84,12 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ResourceManagerService.cs" />
+    <Compile Include="UI\TagControl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\TagControl.Designer.cs">
+      <DependentUpon>TagControl.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="FullScreenImageForm.resx">
       <DependentUpon>FullScreenImageForm.cs</DependentUpon>
     </EmbeddedResource>
